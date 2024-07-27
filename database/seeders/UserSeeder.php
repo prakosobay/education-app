@@ -13,11 +13,22 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('users')->truncate();
         DB::table('users')->insert([
             'name' => 'Administrator',
             'email' => 'admin@mail.com',
             'password' => Hash::make('12345'),
             'role_id' => 1
+        ]);
+
+        DB::table('roles')->truncate();
+        DB::table('roles')->insert([
+            [
+                'name' => 'Administrator',
+            ],
+            [
+                'name' => 'User',
+            ]
         ]);
     }
 }
