@@ -22,6 +22,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('artikel/{id}', [ArtikelController::class, 'show'])->name('artikel.show');
+Route::get('artikel/{id}', [ArtikelController::class, 'show'])->name('artikel.show'); // LIHAT ARTIKEL
+Route::get('artikel/create', [ArtikelController::class, 'create'])->name('artikel.create'); // HALAMAN BUAT ARTIKEL
+Route::post('artikel', [ArtikelController::class, 'store'])->name('artikel.store'); // SAVE ARTIKEL
+Route::get('artikel/{id}/edit', [ArtikelController::class, 'edit'])->name('artikel.edit'); // EDIT ARTIKEL
+Route::put('artikel/{id}', [ArtikelController::class, 'update'])->name('artikel.update'); // UPDATE ARTIKEL
+Route::delete('artikel/{id}', [ArtikelController::class, 'destroy'])->name('artikel.destroy'); // DELETE ARTIKEL
 
 require __DIR__.'/auth.php';
