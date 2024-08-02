@@ -15,10 +15,30 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->truncate();
         DB::table('users')->insert([
-            'name' => 'Administrator',
-            'email' => 'admin@mail.com',
-            'password' => Hash::make('12345'),
-            'role_id' => 1
+            [
+                'name' => 'Administrator',
+                'email' => 'admin@mail.com',
+                'password' => Hash::make('12345'),
+                'role_id' => 1
+            ],
+            [
+                'name' => 'Ucup',
+                'email' => 'ucup@mail.com',
+                'password' => Hash::make('12345678'),
+                'role_id' => 2
+            ],
+            [
+                'name' => 'yau',
+                'email' => 'yau@mail.com',
+                'password' => Hash::make('87654321'),
+                'role_id' => 2
+            ],
+            [
+                'name' => 'bay',
+                'email' => 'bay@mail.com',
+                'password' => Hash::make('12345678'),
+                'role_id' => 2
+            ]
         ]);
 
         DB::table('roles')->truncate();
