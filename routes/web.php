@@ -44,6 +44,7 @@ Route::get('article/new',
     [ArticleController::class, 'newArticle'])
         ->middleware(['auth', 'verified'])
         ->name('article.new');
+Route::post('article/new', [ArticleController::class, 'store'])->middleware(['auth', 'verified'])->name('article.store');
 Route::get('article/{id}',
     [ArticleController::class, 'findArticleById'])->name('article.id');
 Route::post('/articles/{id}/comments',

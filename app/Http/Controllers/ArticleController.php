@@ -12,7 +12,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::with(['user', 'tag', 'comments.user'])->get();
+        $articles = Article::with(['user', 'tag', 'comments.user'])->where('is_apprv', 1)->get();
         $tags = Tag::all();
         $user = auth()->user();
         return view('user.dashboard', compact('articles', 'tags', 'user'));
@@ -35,8 +35,18 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
-        $article = Article::create($request->all());
-        return response()->json($article, 201);
+        Article::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'is_apprv' => false,
+            'user_id' => auth()->id(),
+            'apprv_by' => null,
+            'tag_id' => $request->tags,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        // return response()->json($article, 201);
+        return redirect()->back()->with('status', 'Article saved successfully!');
     }
 
     public function show($id)
