@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Models\Article;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -19,6 +20,14 @@ class ArticleController extends Controller
 
     public function indexForGuest()
     {
+        if (Auth::check()) {
+            $user = Auth::user();
+            if ($user->role_id == 1) {
+                return redirect('/dashboard');
+            } else {
+                return redirect('/users');
+            }
+        }
         $articles = Article::with(['user', 'tag', 'comments.user'])->get();
         $tags = Tag::all();
         return view('user.guest', compact('articles', 'tags'));
