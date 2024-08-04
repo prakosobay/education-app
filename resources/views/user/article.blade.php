@@ -29,6 +29,7 @@
             </div>
         @endforeach
     </section>--}}
+    @auth
     <!-- Comments section-->
     <section class="mb-5">
         <div class="card bg-light">
@@ -53,4 +54,5 @@
             </div>
         </div>
     </section>
+    @endauth
 @endsection
