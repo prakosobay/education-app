@@ -33,9 +33,15 @@ class AuthenticatedSessionController extends Controller
         $role = User::where('email', $request->email)->select('role_id')->first();
         // dd($role);
         if ($role->role_id == 1) {
+<<<<<<< HEAD
             return redirect()->intended(route('adminPanel', absolute: false));
         } else {
             return redirect()->intended(route('mainArea', absolute: false));
+=======
+            return redirect()->intended(route('dashboard', absolute: false));
+        } else {
+            return redirect()->intended(route('users', absolute: false));
+>>>>>>> a9ad036cb04b3399820c7b7c6c678e15b8800637
         }
     }
 
