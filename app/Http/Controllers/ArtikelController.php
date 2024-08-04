@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{CommentArtikel, User, Role, MainArtikel};
+use Illuminate\Support\Facades\{Auth};
+
+// use Illuminate\
 
 class ArtikelController extends Controller
 {
@@ -68,5 +71,13 @@ class ArtikelController extends Controller
         $artikel->delete();
 
         return redirect()->route('artikel.index')->with('success', 'Artikel terhapus');
+    }
+
+    public function showAll()
+    {
+        $userId = Auth::user()->id;
+        $artikel = MainArtikel::where('created_by', $userId)->get();
+        dd($artikel);
+        return view('artikel.showAll', compact('artikel'));
     }
 }
