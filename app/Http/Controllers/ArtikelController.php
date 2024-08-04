@@ -69,4 +69,5 @@ class ArtikelController extends Controller
 
         return redirect()->route('artikel.index')->with('success', 'Artikel terhapus');
     }
+
 }
