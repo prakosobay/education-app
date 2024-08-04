@@ -28,7 +28,7 @@ class ArticleController extends Controller
                 return redirect('/users');
             }
         }
-        $articles = Article::with(['user', 'tag', 'comments.user'])->get();
+        $articles = Article::with(['user', 'tag', 'comments.user'])->where('is_apprv', 1)->get();
         $tags = Tag::all();
         return view('user.guest', compact('articles', 'tags'));
     }

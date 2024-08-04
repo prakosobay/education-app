@@ -14,7 +14,7 @@ class CreateArticlesTable extends Migration
             $table->text('content');
             $table->boolean('is_apprv');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('apprv_by')->constrained('users');
+            $table->foreignId('apprv_by')->nullable()->constrained('users');
             $table->foreignId('tag_id')->constrained('tags');
 //            $table->foreignId('comment_id')->constrained('comments');
             $table->timestamps();
